@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Продукты</title>
+  <script src="https://unpkg.com/htmx.org@2.0.3"></script>
+  <style>
+    * { box-sizing: border-box; }
+    body { font-family: system-ui, sans-serif; max-width: 600px; margin: 2rem auto; padding: 0 1rem; }
+    h1 { font-weight: 400; }
+    .product { border-bottom: 1px solid #eee; padding: 1rem 0; }
+    .product:last-child { border: none; }
+    .price { font-weight: 600; color: #333; }
+    .loading { color: #888; }
+  </style>
+</head>
+<body>
+  <a href="{% url 'demo_serialization' %}">Демо: сериализация</a>  
+  <div id="export-status"></div>
+<form method="post" action="{% url 'export_catalog' %}"
+      hx-post="{% url 'export_catalog' %}" hx-target="#export-status" hx-swap="innerHTML">
+  {% csrf_token %}
+  <button type="submit">Скачать каталог в PDF</button>
+</form>  
+  <h1>Продукты</h1>
+  <div hx-get="/partials/products/" hx-trigger="load" hx-swap="innerHTML" class="loading">
+    Загрузка…
+  </div>
+</body>
+</html>

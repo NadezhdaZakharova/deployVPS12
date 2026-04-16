@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Демо сериализации</title>
+  <script src="https://unpkg.com/htmx.org@2.0.3"></script>
+</head>
+<body>
+  <h1>Сериализация аргументов задач</h1>
+  {% if product %}
+  <p>Товар: <strong>{{ product.name }}</strong> (id={{ product.id }})</p>
+  <div id="demo-result"><!-- сюда HTMX подставит ответ --></div>
+  <form method="post" action="{% url 'demo_serialization_wrong' %}" style="display:inline;"
+        hx-post="{% url 'demo_serialization_wrong' %}" hx-target="#demo-result" hx-swap="innerHTML">
+    {% csrf_token %}
+    <input type="hidden" name="product_id" value="{{ product.id }}">
+    <button type="submit" style="background:#c00;color:white;padding:0.5rem 1rem;">
+      Неправильно: передать объект (→ ошибка)
+    </button>
+  </form>
+  <form method="post" action="{% url 'demo_serialization_ok' %}" style="display:inline;"
+        hx-post="{% url 'demo_serialization_ok' %}" hx-target="#demo-result" hx-swap="innerHTML">
+    {% csrf_token %}
+    <input type="hidden" name="product_id" value="{{ product.id }}">
+    <button type="submit" style="background:#0a0;color:white;padding:0.5rem 1rem;">
+      Правильно: передать id (→ ок)
+    </button>
+  </form>
+  {% else %}
+  <p>Нет товаров в каталоге.</p>
+  {% endif %}
+  <p><a href="{% url 'home' %}">← На главную</a></p>
+</body>
+</html>

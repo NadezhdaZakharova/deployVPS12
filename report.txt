@@ -1,0 +1,259 @@
+3 workers
+
+user@DESKTOP-8D2KTHD:/mnt/c/Users/User/Desktop/web_web$ ab -n 10000 -c 100 http://72.56.36.164:8080/api/products
+wrk -t4 -c200 -d30s http://72.56.36.164:8080/api/products
+wrk -t4 -c200 -d30s http://72.56.36.164:8080/api/health
+This is ApacheBench, Version 2.3 <$Revision: 1903618 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking 72.56.36.164 (be patient)
+Completed 1000 requests
+Completed 2000 requests
+Completed 3000 requests
+Completed 4000 requests
+Completed 5000 requests
+Completed 6000 requests
+Completed 7000 requests
+Completed 8000 requests
+Completed 9000 requests
+Completed 10000 requests
+Finished 10000 requests
+
+
+Server Software:        gunicorn
+Server Hostname:        72.56.36.164
+Server Port:            8080
+
+Document Path:          /api/products
+Document Length:        1315 bytes
+
+Concurrency Level:      100
+Time taken for tests:   147.136 seconds
+Complete requests:      10000
+Failed requests:        0
+Total transferred:      16040000 bytes
+HTML transferred:       13150000 bytes
+Requests per second:    67.96 [#/sec] (mean)
+Time per request:       1471.359 [ms] (mean)
+Time per request:       14.714 [ms] (mean, across all concurrent requests)
+Transfer rate:          106.46 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0   91 1759.5      8   69007
+Processing:   -12  163 141.5    223    1166
+Waiting:        0  162 141.3    221    1166
+Total:          0  254 1759.0    235   69024
+
+Percentage of the requests served within a certain time (ms)
+  50%    235
+  66%    271
+  75%    283
+  80%    290
+  90%    313
+  95%    373
+  98%    605
+  99%   1122
+ 100%  69024 (longest request)
+Running 30s test @ http://72.56.36.164:8080/api/products
+  4 threads and 200 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   500.07ms  233.84ms 810.04ms   70.65%
+    Req/Sec    64.18     62.41   323.00     71.43%
+  1316 requests in 30.04s, 2.01MB read
+  Socket errors: connect 0, read 0, write 0, timeout 1
+Requests/sec:     43.82
+Transfer/sec:     68.63KB
+Running 30s test @ http://72.56.36.164:8080/api/health
+  4 threads and 200 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    64.96ms   41.12ms 148.86ms   51.05%
+    Req/Sec    69.20     80.06   220.00     72.00%
+  190 requests in 29.78s, 56.22KB read
+Requests/sec:      6.38
+Transfer/sec:      1.89KB
+user@DESKTOP-8D2KTHD:/mnt/c/Users/User/Desktop/web_web$
+
+
+Uvicorn 4 воркера (conn_max_age=600)
+
+user@DESKTOP-8D2KTHD:/mnt/c/Users/User/Desktop/web_web$ ab -n 10000 -c 100 http://72.56.36.164:8080/api/products
+wrk -t4 -c200 -d30s http://72.56.36.164:8080/api/products
+wrk -t4 -c200 -d30s http://72.56.36.164:8080/api/health
+This is ApacheBench, Version 2.3 <$Revision: 1903618 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking 72.56.36.164 (be patient)
+Completed 1000 requests
+Completed 2000 requests
+Completed 3000 requests
+Completed 4000 requests
+Completed 5000 requests
+apr_pollset_poll: The timeout specified has expired (70007)
+Total of 5790 requests completed
+Running 30s test @ http://72.56.36.164:8080/api/products
+  4 threads and 200 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   193.53ms  155.76ms 618.49ms   68.17%
+    Req/Sec    71.48     37.20   230.00     64.75%
+  5328 requests in 30.14s, 8.15MB read
+Requests/sec:    176.76
+Transfer/sec:    276.88KB
+Running 30s test @ http://72.56.36.164:8080/api/health
+  4 threads and 200 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    28.50ms   23.19ms  89.75ms   82.42%
+    Req/Sec    21.04     36.16   180.00     92.59%
+  165 requests in 29.89s, 48.82KB read
+Requests/sec:      5.52
+Transfer/sec:      1.63KB
+
+
+Uvicorn 4 воркера (conn_max_age=0)
+
+user@DESKTOP-8D2KTHD:/mnt/c/Users/User/Desktop/web_web$ ab -n 10000 -c 100 http://72.56.36.164:8080/api/products
+wrk -t4 -c200 -d30s http://72.56.36.164:8080/api/products
+wrk -t4 -c200 -d30s http://72.56.36.164:8080/api/health
+This is ApacheBench, Version 2.3 <$Revision: 1903618 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking 72.56.36.164 (be patient)
+Completed 1000 requests
+Completed 2000 requests
+Completed 3000 requests
+Completed 4000 requests
+Completed 5000 requests
+Completed 6000 requests
+Completed 7000 requests
+Completed 8000 requests
+Completed 9000 requests
+Completed 10000 requests
+Finished 10000 requests
+
+
+Server Software:        uvicorn
+Server Hostname:        72.56.36.164
+Server Port:            8080
+
+Document Path:          /api/products
+Document Length:        1315 bytes
+
+Concurrency Level:      100
+Time taken for tests:   303.539 seconds
+Complete requests:      10000
+Failed requests:        0
+Total transferred:      15840000 bytes
+HTML transferred:       13150000 bytes
+Requests per second:    32.94 [#/sec] (mean)
+Time per request:       3035.390 [ms] (mean)
+Time per request:       30.354 [ms] (mean, across all concurrent requests)
+Transfer rate:          50.96 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0   39  93.1     12    1294
+Processing:    53 2990 575.5   2933    6506
+Waiting:       44 2948 567.4   2894    6496
+Total:         64 3029 575.4   2968    6520
+
+Percentage of the requests served within a certain time (ms)
+  50%   2968
+  66%   3144
+  75%   3255
+  80%   3338
+  90%   3603
+  95%   4202
+  98%   4738
+  99%   4993
+ 100%   6520 (longest request)
+Running 30s test @ http://72.56.36.164:8080/api/products
+  4 threads and 200 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     0.00us    0.00us   0.00us    -nan%
+    Req/Sec    13.09     11.89    80.00     83.52%
+  1013 requests in 29.97s, 1.53MB read
+  Socket errors: connect 0, read 0, write 0, timeout 1013
+Requests/sec:     33.80
+Transfer/sec:     52.28KB
+Running 30s test @ http://72.56.36.164:8080/api/health
+  4 threads and 200 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     1.08s   405.43ms   2.00s    61.01%
+    Req/Sec    45.47     29.95   202.00     75.60%
+  5168 requests in 30.01s, 1.39MB read
+  Socket errors: connect 0, read 0, write 0, timeout 203
+Requests/sec:    172.19
+Transfer/sec:     47.59KB
+user@DESKTOP-8D2KTHD:/mnt/c/Users/User/Desktop/web_web$ 
+
+
+Gunicorn 8 workers + 4 threads (conn_max_age=600)
+
+user@DESKTOP-8D2KTHD:/mnt/c/Users/User/Desktop/web_web$ wrk -t4 -c200 -d30s http://72.56.36.164:8080/api/products
+ab -n 10000 -c 50 http://72.56.36.164:8080/api/products
+Running 30s test @ http://72.56.36.164:8080/api/products
+  4 threads and 200 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   619.98ms  504.41ms   2.00s    61.15%
+    Req/Sec    84.11     30.93   171.00     66.55%
+  9501 requests in 29.92s, 14.58MB read
+  Socket errors: connect 0, read 0, write 0, timeout 222
+Requests/sec:    317.60
+Transfer/sec:    499.04KB
+This is ApacheBench, Version 2.3 <$Revision: 1903618 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking 72.56.36.164 (be patient)
+Completed 1000 requests
+Completed 2000 requests
+Completed 3000 requests
+Completed 4000 requests
+Completed 5000 requests
+Completed 6000 requests
+Completed 7000 requests
+Completed 8000 requests
+Completed 9000 requests
+Completed 10000 requests
+Finished 10000 requests
+
+
+Server Software:        gunicorn
+Server Hostname:        72.56.36.164
+Server Port:            8080
+
+Document Path:          /api/products
+Document Length:        1315 bytes
+
+Concurrency Level:      50
+Time taken for tests:   142.385 seconds
+Complete requests:      10000
+Failed requests:        0
+Total transferred:      16040000 bytes
+HTML transferred:       13150000 bytes
+Requests per second:    70.23 [#/sec] (mean)
+Time per request:       711.927 [ms] (mean)
+Time per request:       14.239 [ms] (mean, across all concurrent requests)
+Transfer rate:          110.01 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0  102 2007.6      8   69023
+Processing:   -11  108 113.0     78    1216
+Waiting:        0   90  99.5     61    1203
+Total:          0  210 2007.2     89   69044
+
+Percentage of the requests served within a certain time (ms)
+  50%     89
+  66%    141
+  75%    172
+  80%    192
+  90%    255
+  95%    321
+  98%    469
+  99%    887
+ 100%  69044 (longest request)
+user@DESKTOP-8D2KTHD:/mnt/c/Users/User/Desktop/web_web$ 

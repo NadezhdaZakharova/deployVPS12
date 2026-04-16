@@ -24,7 +24,8 @@ jobs:
           script: |
             set -e
             cd "${{ secrets.VPS_PROJECT_PATH }}"
-            git pull origin "${{ github.ref_name }}"
+            git fetch origin "${{ github.ref_name }}"
+            git reset --hard "origin/${{ github.ref_name }}"
             docker compose -f docker-compose.prod.yml up -d --build
             docker compose -f docker-compose.prod.yml ps
             sleep 5

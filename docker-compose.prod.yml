@@ -31,7 +31,7 @@ services:
       POSTGRES_PASSWORD: shop
       DB_CONN_MAX_AGE: "600"
       DJANGO_DEBUG: "0"
-      ALLOWED_HOSTS: "72.56.36.164,127.0.0.1,localhost,[::1],*"
+      ALLOWED_HOSTS: "django.h1n.ru,81.90.182.174,127.0.0.1,localhost"
     ports:
       - "8080:8000"
     volumes:

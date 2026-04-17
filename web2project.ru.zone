@@ -1,0 +1,4 @@
+$ORIGIN web2project.ru.
+$TTL 3600
+@   IN  A       72.56.36.164
+www IN  A       72.56.36.164
